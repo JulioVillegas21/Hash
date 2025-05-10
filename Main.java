@@ -44,9 +44,9 @@ public class Main {
                     tarea.setDescripcion(descripcion);
                     System.out.println("Ingrese la fecha de creacion de la tarea");
                     //mati vos sabes hacer lo de las fechas xd
-                    tarea.setId(null);
+                    tarea.darId();
                     tarea.setEstado(0);
-                    Tareas tareas = new Tareas(nombre,descripcion,"2023-10-10");
+                    Tareas tareas = new Tareas(nombre,descripcion,"2023-10-10",1);
                     // Aqui se agrega el ingresar que contiene las funciones de la tabla hash y las colisiones
 
                     
