@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     /**
@@ -7,6 +8,7 @@ public class Main {
     public static void main(String[]args){
         Scanner scanner = new Scanner(System.in);
         int hash,colision,opcion;
+
         System.out.println("Ingrese el metodo denasignacion de indice deseado");
         System.out.println("1.Arismetica modular");
         System.out.println("2.Metodo de la multiplicacion");
@@ -31,7 +33,25 @@ public class Main {
             opcion = scanner.nextInt();
             switch(opcion){
                 case 1:
-                    // Ingresar tarea
+                    Tareas tarea = new Tareas();
+                    System.out.println("Ingrese el nombre de la tarea");
+                    String nombre = scanner.next();
+                    scanner.nextLine();
+                    tarea.setNombre(nombre);
+                    System.out.println("Ingrese la descripcion de la tarea");
+                    String descripcion = scanner.next();
+                    scanner.nextLine();
+                    tarea.setDescripcion(descripcion);
+                    System.out.println("Ingrese la fecha de creacion de la tarea");
+                    //mati vos sabes hacer lo de las fechas xd
+                    tarea.setId(null);
+                    tarea.setEstado(0);
+                    Tareas tareas = new Tareas(nombre,descripcion,"2023-10-10");
+                    // Aqui se agrega el ingresar que contiene las funciones de la tabla hash y las colisiones
+
+                    
+
+
                     break;
                 case 2:
                     // Editar tarea
