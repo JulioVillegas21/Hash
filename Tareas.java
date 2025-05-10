@@ -1,11 +1,13 @@
 import java.util.UUID;
+
 public class Tareas {
-    private String id;
+    private String id = null;
     private String nombre;
     private String descripcion;
     private String fechaCreacion;
+    private String fechaFinal;
     private int estado;
-    private boolean eliminado;
+    private boolean eliminado = false;
 
 
 
@@ -13,63 +15,72 @@ public class Tareas {
 
 
 
-    
-    public Tareas(String nombre, String descripcion, String fechaCreacion, int Estado){
-        this.id = UUID.randomUUID().toString();
+
+    public Tareas(String id, String nombre, String descripcion, String fechaCreacion, int Estado){
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaCreacion = fechaCreacion;
         this.estado = estado;
-        this.eliminado = false;
+        
     }
 
-
-
-
-
-    public void Tareas(){
-
-    }
-
-    public String getId() {
-        return id;
-    }
     public void setId(String id) {
         this.id = id;
     }
+
+
+
+    public Tareas(){
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void darId() {
+        this.id = UUID.randomUUID().toString();
+    }
+
+
+
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     public String getDescripcion() {
-        return descripcion;
+        return this.descripcion;
     }
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
     public String getFechaCreacion() {
-        return fechaCreacion;
+        return this.fechaCreacion;
     }
     public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
     public int getEstado() {
-        return estado;
+        return this.estado;
     }
     public void setEstado(int estado) {
         this.estado = estado;
     }
     public boolean seteliminado(boolean eliminado) {
         this.eliminado = eliminado;
-        return eliminado;
+        return this.eliminado;
     }
     public boolean geteliminado(){
-        return eliminado;
+        return this.eliminado;
     }
-
-
+    public void setFechaFinal (String fecha){
+        this.fechaFinal = fecha;
+    }
+    public String setFechaFinal (){
+        return this.fechaFinal;
+    }
 
 
 
