@@ -7,6 +7,13 @@ public class Tareas {
     private int estado;
     private boolean eliminado;
 
+
+
+
+
+
+
+    
     public Tareas(String nombre, String descripcion, String fechaCreacion, int Estado){
         this.id = UUID.randomUUID().toString();
         this.nombre = nombre;
@@ -15,6 +22,11 @@ public class Tareas {
         this.estado = estado;
         this.eliminado = false;
     }
+
+
+
+
+
     public void Tareas(){
 
     }
