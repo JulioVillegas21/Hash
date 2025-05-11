@@ -6,8 +6,6 @@ public class Main {
  
     public static Tareas ingresar(){//Asigna valores a los atributos
 
-        
-
         Tareas aux = new Tareas();
         Scanner letra = new Scanner(System.in);
         Scanner num = new Scanner(System.in);
@@ -99,8 +97,6 @@ public class Main {
             switch(opcion){
                 case 1:
 
-                   
-
                     Tareas tarea = new Tareas();
                     tarea=ingresar();
 
@@ -118,12 +114,15 @@ public class Main {
 
                 break;
                 case 2:
+                    tabla.MostrarTabla();
+
                     // Editar tarea
                 break;
                 case 3:
                     // Eliminar tarea
                 break;
                 case 4:
+                    // Buscar tarea 
                     
                 break;
                 case 5:

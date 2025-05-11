@@ -63,6 +63,16 @@ public class Hash {
         return clave;
     } 
 
+    public void MostrarTabla(){
+
+        for (int i = 0 ; i<m ; i++){
+            if (this.tabla[i].getEsAlta() != false){
+                tabla.toString();
+            }
+        } 
+
+    }
+    
 }
     
 

@@ -67,7 +67,17 @@ public class Tareas {
         return this.fechaFinal;
     }
 
-
-
+    @Override
+    public String toString() {
+    return "Tarea [" +
+    "Código=" + id +
+    ", Nombre='" + nombre + '\'' +
+    ", Descripción='" + descripcion + '\'' +
+    ", Estado=" + estado +
+    ", fechaInicio=" + this.fechaCreacion +
+    ", fechaFin=" + this.fechaFinal +
+    ", esAlta=" + this.esAlta+
+    ']';
+    }
 
 }
