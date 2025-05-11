@@ -7,7 +7,7 @@ public class Tareas {
     private String fechaCreacion;
     private String fechaFinal;
     private int estado;
-    private boolean esAlta = false;
+    private boolean esAlta;
 
 
     public Tareas(String nombre, String descripcion, String fechaCreacion, int Estado){

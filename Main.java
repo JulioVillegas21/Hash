@@ -3,9 +3,7 @@ import java.util.Scanner;
 @SuppressWarnings("unused")
 public class Main {
 
- ///
-
-    
+ 
     public static Tareas ingresar(){//Asigna valores a los atributos
 
         
@@ -48,7 +46,7 @@ public class Main {
 
 
 
-    public static int menu(){
+    public static int menu(){ // menu que se ejecutara 
 
         Scanner teclado = new Scanner(System.in);
         int op;
@@ -68,9 +66,10 @@ public class Main {
 
     public static void main(String[]args){
 
+
         Scanner letra = new Scanner(System.in);//Variable de entrada para letras
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
-        int hash,colision,opcion;
+        int hash,colision,opcion; //variables opciones, guardan la opcion del usuario en un determinado tiempo
 
         Hash tabla = new Hash();
 
@@ -89,30 +88,33 @@ public class Main {
         System.out.println("1.Lineal");
         System.out.println("2.Cuadratica");
         colision = num.nextInt();
+
         while(colision <1 || colision > 2){
             System.out.println("Ingrese un metodo valido");
             colision = num.nextInt();
         }
-
-
-
 
         do{
             opcion=menu();
             switch(opcion){
                 case 1:
 
-                     Tareas tarea = new Tareas();
-                     tarea=ingresar();
-                     tarea.darId();//Asigna un id a la tarea
+                   
+
+                    Tareas tarea = new Tareas();
+                    tarea=ingresar();
+
+                    tarea.darId();
+
+                    tabla.Funcion(hash,colision,tarea);
                      
-                     if ( tabla.Funcion(hash,colision,tarea) == true){
+                    if (tabla.Funcion(hash,colision,tarea) == true){
 
                         System.out.println("La tarea con id " + tarea.getId() + "se ha ingresado correctamente");
-                     }
+                    }
                      else{
                         System.out.println("La tarea que ha creado no se ha ingresado correctamente");
-                     }
+                    }
 
                 break;
                 case 2:

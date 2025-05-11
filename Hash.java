@@ -38,6 +38,8 @@ public class Hash {
             }
         }
 
+        tabla[indice].setEsAlta(true);
+
         return (tabla[indice].getEsAlta()) ? true : false;
     }
 
