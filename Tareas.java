@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 import java.util.UUID;
-
+@SuppressWarnings("static-access")
 public class Tareas {
     private String id = null;
     private String nombre;
     private String descripcion;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaFinal;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
     private String estado;
     private boolean eliminado = false;
 
@@ -19,9 +19,9 @@ public class Tareas {
         
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaCreacion = LocalDate.now();
+        this.fechaInicio = LocalDate.now();
         this.estado ="Pendiente" ;
-        this.fechaFinal= fechaFinal.parse(fechafinal);
+        this.fechaFin= fechaFin.parse(fechafinal);
         
     }
     //Getters y Setters
@@ -50,10 +50,10 @@ public class Tareas {
         this.descripcion = descripcion;
     }
     public LocalDate getFechaCreacion() {
-        return this.fechaCreacion;
+        return this.fechaInicio;
     }
     public void setFechaCreacion(String fechai) {
-        this.fechaCreacion = fechaCreacion.parse(fechai);
+        this.fechaInicio = fechaInicio.parse(fechai);
     }
     public String getEstado() {
         return this.estado;
@@ -79,14 +79,27 @@ public class Tareas {
     public boolean getEliminado(){
         return this.eliminado;
     }
-    @SuppressWarnings("static-access")
+    
     public void setFechaFinal (String fecha){
-        this.fechaFinal = fechaFinal.parse(fecha);
+        this.fechaFin = fechaFin.parse(fecha);
     }
     public LocalDate getFechaFinal (){
-        return this.fechaFinal;
+        return this.fechaFin;
     }
 
+    //Metodos
+    @Override
+    public String toString() {
+    return "Tarea [" +
+    "Código=" + id +
+    ", Nombre='" + nombre + '\'' +
+    ", Descripción='" + descripcion + '\'' +
+    ", Estado=" + estado +
+    ", fechaInicio=" + fechaInicio +
+    ", fechaFin=" + fechaFin +
+    ", esAlta=" + eliminado +
+    ']';
+    }
 
 
 

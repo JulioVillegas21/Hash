@@ -1,20 +1,45 @@
 public class Hash {
+    
+    final int m = 101;
 
+    public int Funcion(int i, String codigo,int colision,Tareas[] tareas){
+        long clave;
+        int indice;
+        
+        clave=transformarId(codigo);
+        if(i==1){
+            indice=AritmeticaMod(clave);
+        }else{
+            indice=MetodoMul(clave);
+        }
 
+        if(tareas[indice].getId()!=null){
 
+        }
+    }
+
+    private int AritmeticaMod(long clave){
+        return (int)(clave % m);
+    }
+    private int MetodoMul(long clave){
+        final double R = 0.618034;
+        double aux;
+        aux=(R*clave)-Math.floor(R*clave);
+        return (int) (aux*m);
+    }
     /* seguir con el modular que esta incompleto, seguir con el otro metodo, nos falta caclcular los elementos i
      * ingresados, falta, tener el calculo de h y detalles , 
      */
 
-    Tareas tabla[] = new Tareas[101];
+    /*Tareas tabla[] = new Tareas[101];
     
     int numDeObj;
 
-    double factorDeCarga = 0.80 ;
+    double λ = 0.80 ;
 
-    final int m = 101;
+    
 
-    final double R = 0.618034;
+    
 
     int elementosCargados=0;
     
@@ -67,7 +92,7 @@ public class Hash {
     }
 
 
-    private int MetodoModular (String id, int colision){
+    private int AritmeticaMod (String id, int colision){
         int clave = 0 ;
         int indice = 0 ;
         
@@ -78,14 +103,14 @@ public class Hash {
        return indice;     
 
     }
+*/
 
-
-    private int IdTanformado (String id ){
+    private int transformarId (String id ){
         int clave = 0 ;
 
         for (int j = 0; j < Math.min(id.length(),10); j++){
-        clave = clave * 27 + id.charAt(j);
-    }
+         clave = clave * 27 + id.charAt(j);
+        }
         return clave;
     } 
 

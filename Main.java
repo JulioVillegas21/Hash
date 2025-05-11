@@ -42,11 +42,12 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         int op;
             System.out.println("[1].Ingresar tarea");
-            System.out.println("[2].Editar Tarea");
-            System.out.println("[3].Eliminar Tarea");
-            System.out.println("[4].Salir");
+            System.out.println("[2].Mostrar tarea");
+            System.out.println("[3].Editar Tarea");
+            System.out.println("[4].Eliminar Tarea");
+            System.out.println("[5].Salir");
             op = teclado.nextInt();
-            while(op<1||op>4){
+            while(op<1||op>5){
                 System.out.println("Ingrese una opcion valida");
                 op = teclado.nextInt();
             }
@@ -73,6 +74,10 @@ public class Main {
             System.out.println("Ingrese un metodo valido");
             colision = num.nextInt();
         }
+        for(int i=0;i<101;i++){
+            tareas[i]=new Tareas();
+            tareas[i]=null;
+        }
         do{
             opcion=menu();
             switch(opcion){
@@ -86,19 +91,19 @@ public class Main {
                     
 
 
-                    break;
-                 case 2:
+                break;
+                case 2:
                     // Editar tarea
-                    break;
+                break;
                 case 3:
                     // Eliminar tarea
-                    break;
+                break;
                 case 4:
+                    
+                break;
+                case 5:
                     System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-                    break;
+                break;
             }
 
         }while(opcion!=4);
