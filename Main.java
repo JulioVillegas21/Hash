@@ -1,5 +1,6 @@
-import java.util.Scanner;
 
+import java.util.Scanner;
+@SuppressWarnings("unused")
 public class Main {
     /**
      * @param args
@@ -55,7 +56,7 @@ public class Main {
         Scanner letra = new Scanner(System.in);//Variable de entrada para letras
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
         int hash,colision,opcion;
-        Tareas [] tareas= new Tareas[];
+        Tareas [] tareas= new Tareas[101];
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
         System.out.println("1.Arismetica modular");
         System.out.println("2.Metodo de la multiplicacion");
