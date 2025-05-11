@@ -1,42 +1,34 @@
-import java.time.LocalDate;
 import java.util.UUID;
-@SuppressWarnings("static-access")
+
 public class Tareas {
     private String id = null;
     private String nombre;
     private String descripcion;
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-    private String estado;
-    private boolean eliminado = false;
+    private String fechaCreacion;
+    private String fechaFinal;
+    private int estado;
+    private boolean esAlta = false;
 
-    //Constructres
-    public Tareas(){
 
-    }
-
-    public Tareas( String nombre, String descripcion, String fechafinal){
+    public Tareas(String nombre, String descripcion, String fechaCreacion, int Estado){
         
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaInicio = LocalDate.now();
-        this.estado ="Pendiente" ;
-        this.fechaFin= fechaFin.parse(fechafinal);
+        this.fechaCreacion = fechaCreacion;
+        this.estado = estado;
         
     }
-    //Getters y Setters
     public void setId(String id) {
         this.id = id;
     }
-
+    public Tareas(){
+    }
     public String getId() {
         return this.id;
     }
-
     public void darId() {
         this.id = UUID.randomUUID().toString();
     }
-
     public String getNombre() {
         return this.nombre;
     }
@@ -49,57 +41,32 @@ public class Tareas {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public LocalDate getFechaCreacion() {
-        return this.fechaInicio;
+    public String getFechaCreacion() {
+        return this.fechaCreacion;
     }
-    public void setFechaCreacion(String fechai) {
-        this.fechaInicio = fechaInicio.parse(fechai);
+    public void setFechaCreacion(String fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
-    public String getEstado() {
+    public int getEstado() {
         return this.estado;
     }
     public void setEstado(int estado) {
-        switch (estado) {
-            case 1:
-                this.estado="En curso";
-                break;
-            case 2:
-                this.estado="Terminada";
-                break;
-            default:
-                this.estado="Pendiente";
-                break;
-        }
-        
+        this.estado = estado;
     }
-    public boolean setEliminado(boolean eliminado) {
-        this.eliminado = eliminado;
-        return this.eliminado;
+    public boolean setEsAlta(boolean eliminado) {
+        this.esAlta = eliminado;
+        return this.esAlta;
     }
-    public boolean getEliminado(){
-        return this.eliminado;
+    public boolean getEsAlta(){
+        return this.esAlta;
     }
-    
     public void setFechaFinal (String fecha){
-        this.fechaFin = fechaFin.parse(fecha);
+        this.fechaFinal = fecha;
     }
-    public LocalDate getFechaFinal (){
-        return this.fechaFin;
+    public String setFechaFinal (){
+        return this.fechaFinal;
     }
 
-    //Metodos
-    @Override
-    public String toString() {
-    return "Tarea [" +
-    "Código=" + id +
-    ", Nombre='" + nombre + '\'' +
-    ", Descripción='" + descripcion + '\'' +
-    ", Estado=" + estado +
-    ", fechaInicio=" + fechaInicio +
-    ", fechaFin=" + fechaFin +
-    ", esAlta=" + eliminado +
-    ']';
-    }
 
 
 

@@ -1,109 +1,56 @@
-public class Hash {
-    
-    final int m = 101;
 
-    public int Funcion(int i, String codigo,int colision,Tareas[] tareas){
+public class Hash {
+
+    private final int m = 101;
+
+    private int numElementos = 0;
+
+    private double factorCarga = 0;
+
+    Tareas tabla [] = new Tareas[m];
+
+    public Hash(){
+        for ( int i = 0 ; i<m ; i++)
+        tabla[i] = new Tareas();
+    }
+
+
+    public boolean Funcion(int i, int colision,Tareas tarea){
+
         long clave;
         int indice;
         
-        clave=transformarId(codigo);
+        clave=transformarId(tarea.getId());
         if(i==1){
             indice=AritmeticaMod(clave);
         }else{
             indice=MetodoMul(clave);
         }
 
-        if(tareas[indice].getId()!=null){
+        if(this.tabla[indice].getId() != null){
 
+            if(colision == 1){
+                indice = Colision.ColisionLineal(indice, this.tabla);
+
+            }
+            else{
+                Colision.ColisionCuadratica(indice, this.tabla);
+            }
         }
+
+        return (tabla[indice].getEsAlta()) ? true : false;
     }
 
     private int AritmeticaMod(long clave){
         return (int)(clave % m);
     }
+
     private int MetodoMul(long clave){
         final double R = 0.618034;
         double aux;
         aux=(R*clave)-Math.floor(R*clave);
         return (int) (aux*m);
     }
-    /* seguir con el modular que esta incompleto, seguir con el otro metodo, nos falta caclcular los elementos i
-     * ingresados, falta, tener el calculo de h y detalles , 
-     */
-
-    /*Tareas tabla[] = new Tareas[101];
-    
-    int numDeObj;
-
-    double λ = 0.80 ;
-
-    
-
-    
-
-    int elementosCargados=0;
-    
-    
-    public int GetElementos(){
-
-        return elementosCargados;
-    }
-
-
-    public Hash (){
-        for (int i = 0 ; i<100 ; i++){
-            tabla[i] = new Tareas();
-        }
-    } 
-    
-    
-    public boolean Insertar (Tareas objeto , int hash , int colision) {
-        
-        int indice = 0;
-
-        if ( hash == 1){ // hash 1 = metodo modular , hash 2 = metodo multiplicacion
-
-            indice=MetodoModular(objeto.getId(), colision);
-
-            if(tabla[indice].getId() == null){
-
-                tabla[indice].setId(objeto.getId()); 
-
-
-
-
-                
-            }
-
-
-
-
-        }
-        else {
-
-        }
-
-
-
-
-
-
-        return (objeto.geteliminado() == true ) ? true : false;
-    }
-
-
-    private int AritmeticaMod (String id, int colision){
-        int clave = 0 ;
-        int indice = 0 ;
-        
-        clave = IdTanformado(id);
-
-        indice = clave % m;
-
-       return indice;     
-
-    }
-*/
 
     private int transformarId (String id ){
         int clave = 0 ;
@@ -113,14 +60,6 @@ public class Hash {
         }
         return clave;
     } 
-
-
-
-
-
-
-
-
 
 }
     

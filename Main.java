@@ -2,10 +2,13 @@
 import java.util.Scanner;
 @SuppressWarnings("unused")
 public class Main {
-    /**
-     * @param args
-     */
+
+ ///
+
+    
     public static Tareas ingresar(){//Asigna valores a los atributos
+
+        
 
         Tareas aux = new Tareas();
         Scanner letra = new Scanner(System.in);
@@ -15,21 +18,26 @@ public class Main {
 
         System.out.println("Ingrese el nombre de la tarea");
         nombre = letra.nextLine();
-        aux.setNombre(nombre);//Coloca el nombre ingresado
+        aux.setNombre(nombre);//Coloca el nombre ingresa11do
 
         System.out.println("Ingrese la descripcion de la tarea");
         descripcion = letra.nextLine();
         aux.setDescripcion(descripcion);//Coloca la descripcion ingresada
 
-        System.out.println("Ingrese la fecha de creacion de la tarea(AA-MM-DD)");
-        fechaf = letra.nextLine();
-        try {//Verifica que la fecha ingresada este en el formato establecido
-            aux.setFechaFinal(fechaf);
-        } catch (Exception e) {
-            System.out.println("Ingrese la fecha en el formado indicado (AA-MM-DD)");
+         
+
+            System.out.println("Ingrese la fecha de creacion de la tarea(AA-MM-DD)");
             fechaf = letra.nextLine();
+        
+            try {
             aux.setFechaFinal(fechaf);
-        }
+            } 
+            catch (Exception e) {
+            System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
+            fechaf = letra.nextLine();
+            }
+        
+       
 
         System.out.println("Ingrese el estado:\n[1].Pendiente\n[2].En curso");   
         estado=num.nextInt();
@@ -37,6 +45,9 @@ public class Main {
 
         return aux;
     }
+
+
+
     public static int menu(){
 
         Scanner teclado = new Scanner(System.in);
@@ -53,19 +64,27 @@ public class Main {
             }
         return op;
     }
+
+
     public static void main(String[]args){
+
         Scanner letra = new Scanner(System.in);//Variable de entrada para letras
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
         int hash,colision,opcion;
-        Tareas [] tareas= new Tareas[101];
+
+        Hash tabla = new Hash();
+
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
         System.out.println("1.Arismetica modular");
         System.out.println("2.Metodo de la multiplicacion");
+
         hash = num.nextInt();
+
         while(hash <1 || hash > 2){
             System.out.println("Ingrese un metodo valido");
             hash = num.nextInt();
         }
+
         System.out.println("Ingrese el metodo de colision deseado");
         System.out.println("1.Lineal");
         System.out.println("2.Cuadratica");
@@ -74,22 +93,26 @@ public class Main {
             System.out.println("Ingrese un metodo valido");
             colision = num.nextInt();
         }
-        for(int i=0;i<101;i++){
-            tareas[i]=new Tareas();
-            tareas[i]=null;
-        }
+
+
+
+
         do{
             opcion=menu();
             switch(opcion){
                 case 1:
+
                      Tareas tarea = new Tareas();
                      tarea=ingresar();
                      tarea.darId();//Asigna un id a la tarea
+                     
+                     if ( tabla.Funcion(hash,colision,tarea) == true){
 
-                    // Aqui se agrega el ingresar que contiene las funciones de la tabla hash y las colisiones
-
-                    
-
+                        System.out.println("La tarea con id " + tarea.getId() + "se ha ingresado correctamente");
+                     }
+                     else{
+                        System.out.println("La tarea que ha creado no se ha ingresado correctamente");
+                     }
 
                 break;
                 case 2:
