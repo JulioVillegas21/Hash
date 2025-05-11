@@ -1,6 +1,6 @@
 
 import java.util.Scanner;
-@SuppressWarnings("unused")
+
 public class Main {
 
  
@@ -26,13 +26,14 @@ public class Main {
             fechaf = letra.nextLine();
         
             try {
-            aux.setFechaFinal(fechaf);
+            aux.setFechaCreacion(fechaf);
             } 
             catch (Exception e) {
             System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
             fechaf = letra.nextLine();
             }
-        
+            
+
        
 
         System.out.println("Ingrese el estado:\n[1].Pendiente\n[2].En curso");   
@@ -68,7 +69,7 @@ public class Main {
         Scanner letra = new Scanner(System.in);//Variable de entrada para letras
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
         int hash,colision,opcion; //variables opciones, guardan la opcion del usuario en un determinado tiempo
-
+        String clave;
         Hash tabla = new Hash();
 
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
@@ -101,10 +102,8 @@ public class Main {
                     tarea=ingresar();
 
                     tarea.darId();
-
-                    tabla.Funcion(hash,colision,tarea);
                      
-                    if (tabla.Funcion(hash,colision,tarea) == true){
+                    if (tabla.Insertar(hash,colision,tarea) == true){
 
                         System.out.println("La tarea con id " + tarea.getId() + "se ha ingresado correctamente");
                     }
@@ -114,9 +113,27 @@ public class Main {
 
                 break;
                 case 2:
+
                     tabla.MostrarTabla();
 
-                    // Editar tarea
+
+                    System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea buscar");
+                    clave=letra.nextLine();
+
+                    tabla.Buscar(clave);
+                    
+
+                    
+
+
+
+
+
+
+
+
+
+                
                 break;
                 case 3:
                     // Eliminar tarea

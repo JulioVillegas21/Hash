@@ -10,7 +10,7 @@ public class Tareas {
     private boolean esAlta;
 
 
-    public Tareas(String nombre, String descripcion, String fechaCreacion, int Estado){
+    public Tareas(String nombre, String descripcion, String fechaCreacion, int estado){
         
         this.nombre = nombre;
         this.descripcion = descripcion;

@@ -15,7 +15,7 @@ public class Hash {
     }
 
 
-    public boolean Funcion(int i, int colision,Tareas tarea){
+    public boolean Insertar(int i, int colision,Tareas tarea){
 
         long clave;
         int indice;
@@ -38,9 +38,11 @@ public class Hash {
             }
         }
 
+        
+        this.tabla[indice]=tarea;
         tabla[indice].setEsAlta(true);
 
-        return (tabla[indice].getEsAlta()) ? true : false;
+        return (tabla[indice].getEsAlta() == true) ? true : false;
     }
 
     private int AritmeticaMod(long clave){
@@ -58,7 +60,7 @@ public class Hash {
         int clave = 0 ;
 
         for (int j = 0; j < Math.min(id.length(),10); j++){
-         clave = clave * 27 + id.charAt(j);
+         clave = clave * 5 + id.charAt(j);
         }
         return clave;
     } 
@@ -66,11 +68,20 @@ public class Hash {
     public void MostrarTabla(){
 
         for (int i = 0 ; i<m ; i++){
-            if (this.tabla[i].getEsAlta() != false){
-                tabla.toString();
+            if (this.tabla[i].getEsAlta()!=false){
+                System.out.println(tabla[i].toString());
             }
         } 
 
+    }
+
+
+    public String Buscar(String clave){
+
+
+
+
+        return "";
     }
     
 }
