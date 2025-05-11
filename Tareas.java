@@ -1,37 +1,31 @@
+import java.time.LocalDate;
 import java.util.UUID;
 
 public class Tareas {
     private String id = null;
     private String nombre;
     private String descripcion;
-    private String fechaCreacion;
-    private String fechaFinal;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaFinal;
     private int estado;
     private boolean eliminado = false;
 
+    //Constructres
+    public Tareas(){
 
+    }
 
-
-
-
-
-
-    public Tareas( String nombre, String descripcion, String fechaCreacion, int Estado){
+    public Tareas( String nombre, String descripcion, int Estado){
         
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaCreacion = fechaCreacion;
+        this.fechaCreacion = LocalDate.now();
         this.estado = estado;
         
     }
-
+    //Getters y Setters
     public void setId(String id) {
         this.id = id;
-    }
-
-
-
-    public Tareas(){
     }
 
     public String getId() {
@@ -41,8 +35,6 @@ public class Tareas {
     public void darId() {
         this.id = UUID.randomUUID().toString();
     }
-
-
 
     public String getNombre() {
         return this.nombre;
@@ -56,10 +48,10 @@ public class Tareas {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public String getFechaCreacion() {
+    public LocalDate getFechaCreacion() {
         return this.fechaCreacion;
     }
-    public void setFechaCreacion(String fechaCreacion) {
+    public void setFechaCreacion(LocalDate fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
     public int getEstado() {
@@ -68,17 +60,18 @@ public class Tareas {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    public boolean seteliminado(boolean eliminado) {
+    public boolean setEliminado(boolean eliminado) {
         this.eliminado = eliminado;
         return this.eliminado;
     }
-    public boolean geteliminado(){
+    public boolean getEliminado(){
         return this.eliminado;
     }
+    @SuppressWarnings("static-access")
     public void setFechaFinal (String fecha){
-        this.fechaFinal = fecha;
+        this.fechaFinal = fechaFinal.parse(fecha);
     }
-    public String setFechaFinal (){
+    public LocalDate getFechaFinal (){
         return this.fechaFinal;
     }
 
