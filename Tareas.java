@@ -7,7 +7,7 @@ public class Tareas {
     private String descripcion;
     private LocalDate fechaCreacion;
     private LocalDate fechaFinal;
-    private int estado;
+    private String estado;
     private boolean eliminado = false;
 
     //Constructres
@@ -15,12 +15,13 @@ public class Tareas {
 
     }
 
-    public Tareas( String nombre, String descripcion, int Estado){
+    public Tareas( String nombre, String descripcion, String fechafinal){
         
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaCreacion = LocalDate.now();
-        this.estado = estado;
+        this.estado ="Pendiente" ;
+        this.fechaFinal= fechaFinal.parse(fechafinal);
         
     }
     //Getters y Setters
@@ -51,14 +52,25 @@ public class Tareas {
     public LocalDate getFechaCreacion() {
         return this.fechaCreacion;
     }
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFechaCreacion(String fechai) {
+        this.fechaCreacion = fechaCreacion.parse(fechai);
     }
-    public int getEstado() {
+    public String getEstado() {
         return this.estado;
     }
     public void setEstado(int estado) {
-        this.estado = estado;
+        switch (estado) {
+            case 1:
+                this.estado="En curso";
+                break;
+            case 2:
+                this.estado="Terminada";
+                break;
+            default:
+                this.estado="Pendiente";
+                break;
+        }
+        
     }
     public boolean setEliminado(boolean eliminado) {
         this.eliminado = eliminado;
