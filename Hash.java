@@ -1,4 +1,3 @@
-
 public class Hash {
 
     private final int m = 101;
@@ -20,7 +19,7 @@ public class Hash {
         long clave;
         int indice;
         
-        clave=transformarId(tarea.getId());
+        clave=TransformarId(tarea.getId().substring(0, 10));
         if(i==1){
             indice=AritmeticaMod(clave);
         }else{
@@ -38,11 +37,10 @@ public class Hash {
             }
         }
 
-        
         this.tabla[indice]=tarea;
-        tabla[indice].setEsAlta(true);
+        tabla[indice].setesAlta(true);
 
-        return (tabla[indice].getEsAlta() == true) ? true : false;
+        return (tabla[indice].getesAlta()) ? true : false;
     }
 
     private int AritmeticaMod(long clave){
@@ -56,7 +54,7 @@ public class Hash {
         return (int) (aux*m);
     }
 
-    private int transformarId (String id ){
+    private int TransformarId (String id ){ 
         int clave = 0 ;
 
         for (int j = 0; j < Math.min(id.length(),10); j++){
@@ -65,25 +63,62 @@ public class Hash {
         return clave;
     } 
 
-    public void MostrarTabla(){
+
+    public void MostrarId(){ // metodo que muestra los id existentes 
+        
+        System.out.println("---------------------------------------------------------------");
 
         for (int i = 0 ; i<m ; i++){
-            if (this.tabla[i].getEsAlta()!=false){
-                System.out.println(tabla[i].toString());
+            if (this.tabla[i].getesAlta()!=false){
+                System.out.println(i+")"+tabla[i].MostrarId());
             }
         } 
+        System.out.println("---------------------------------------------------------------");
+        System.out.println("\n");
 
     }
 
+    public String Buscar(String clave , int hash, int colision ){ //metodo buscar
 
-    public String Buscar(String clave){
+        int x = 1; // es para calcular coliciones 
+       
+        int indice; // su nombre da su funcionalidad xd
+
+        long claveTransformada = TransformarId(clave); // Ya que la funcion hash tanforma el indice en un numero cualquiera, necesito hacer lo mismo con lo que ingrese el usuario
+                                                       // y guardar ese cambio para poder usarlo en los metodos 
+
+        if (hash==1){
+            indice=AritmeticaMod(claveTransformada);
+
+        }
+        else{
+            indice=MetodoMul(claveTransformada);
+        }
+
+        if(tabla[indice].getId() == null || tabla[indice].getesAlta() == false){
+
+            return "El articulo que desea buscar no exite o ha sido eliminado";
+        }
+        else{
+
+            while(tabla[indice] != null && tabla[indice].getesAlta()){
+
+                if (tabla[indice].getId().substring(0, 10).equals(clave)){
+                    
+                    return tabla[indice].toString();
+                }
+
+                if (colision == 1) {
+                indice = Colision.ColisionSimpleMod(indice,x);
+             } else {
+                indice = Colision.ColisionSimpleMul(indice,x);
+                }
 
 
+            }
+            
+        }
 
-
-        return "";
+        return "La tarea no fue encontrada o fue eliminada.";
     }
-    
 }
-    
-
