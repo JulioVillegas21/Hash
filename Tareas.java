@@ -8,11 +8,11 @@ public class Tareas {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private String estado;
-    private boolean esAlta;
+    private boolean esAlta=true;
 
     //Constructres
     public Tareas(){
-
+        this.fechaInicio = LocalDate.now();
     }
 
     public Tareas( String nombre, String descripcion, String fechafinal){
@@ -61,19 +61,21 @@ public class Tareas {
     public void setEstado(int estado) {
         switch (estado) {
             case 1:
-                this.estado="En curso";
+                this.estado="Pendiente";
+                
                 break;
             case 2:
-                this.estado="Terminada";
+                this.estado="En curso";
+                
                 break;
             default:
-                this.estado="Pendiente";
+                this.estado="Terminada";
                 break;
         }
         
     }
-    public void setesAlta(boolean esAlta) {
-        this.esAlta=esAlta;
+    public void setesAlta() {
+        this.esAlta=!esAlta;
     }
     public boolean getesAlta(){
         return this.esAlta;
@@ -95,13 +97,14 @@ public class Tareas {
 
     @Override
     public String toString() {
-    return "Tarea [" +
-    "Código=" + this.id +
-    ", Nombre='" + this.nombre + '\'' +
-    ", Descripción='" + this.descripcion + '\'' +
-    ", Estado=" + this.estado +
-    ", fechaInicio=" + this.fechaInicio +
-    ", fechaFin=" + this.fechaFin ;
+    return """
+    \t\t---Tarea---
+    \nCodigo =""" + this.id +
+    "\n Nombre='" + this.nombre + '\'' +
+    "\n Descripción='" + this.descripcion + '\'' +
+    "\n Estado=" + this.estado +
+    "\n FechaInicio=" + this.fechaInicio +
+    "\n FechaFin=" + this.fechaFin ;
     }
 
 

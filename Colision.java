@@ -1,47 +1,28 @@
 public class Colision {
     
-
-    public static int ColisionLineal(int indice, Tareas arreglo[] ){
-        int x=1;                                                    
-       while(arreglo[indice] != null){
-            indice = (indice + x);
-            x++;
-            if(indice >= 100){
+public static int ColisionLineal(int indice, Tareas arreglo[],String cosa,int x){
+        indice+=x; 
+        if(indice >= 100){
                 indice = indice%101;
-            }
+        }                                               
+       if(arreglo[indice].getId().equalsIgnoreCase(cosa)){
+            return indice;
+            
+        }else{
+            return ColisionLineal(indice, arreglo, cosa,(x++));
         }
-        
-        return indice;
     }
 
-    public static int ColisionCuadratica(int indice, Tareas arreglo[] ){
-        int x=1;
-        while(arreglo[indice] != null){
-            indice = (indice + x^2);
-            x++;
-            if(indice >= 100){
+   public static int ColisionCuadratica(int indice, Tareas arreglo[],String cosa,int x){
+        indice+=(x^2); 
+        if(indice >= 100){
                 indice = indice%101;
-            }
-
+        }                                               
+       if(arreglo[indice].getId().equalsIgnoreCase(cosa)){
+            return indice;
+            
+        }else{
+            return ColisionCuadratica(indice, arreglo, cosa,(x++));
         }
-        
-        return indice;
     }
-
-    public static int ColisionSimpleMod(int indice , int x ){
-
-        indice = (indice + x) % 101;
-
-        return indice;
-    }
-
-    public static int ColisionSimpleMul(int indice, int x){
-
-        
-        indice = (indice + x ^ 2) % 101;
-
-
-        return indice;
-    }
-
 }

@@ -22,15 +22,16 @@ public class Main {
 
          
 
-            System.out.println("Ingrese la fecha de creacion de la tarea(AA-MM-DD)");
+            System.out.println("Ingrese la fecha de creacion de la tarea(AAAA-MM-DD)");
             fechaf = letra.nextLine();
         
             try {
-            aux.setFechaCreacion(fechaf);
+            aux.setFechaFinal(fechaf);
             } 
             catch (Exception e) {
             System.out.println("Fecha inválida. Ingrese la fecha en el formato indicado (AA-MM-DD)");
             fechaf = letra.nextLine();
+            aux.setFechaFinal(fechaf);
             }
             
 
@@ -53,7 +54,7 @@ public class Main {
             System.out.println("[2].Mostrar tarea");
             System.out.println("[3].Editar Tarea");
             System.out.println("[4].Eliminar Tarea");
-            System.out.println("[5].Buscar");
+            System.out.println("[5].Salir");
             op = teclado.nextInt();
             while(op<1||op>5){
                 System.out.println("Ingrese una opcion valida");
@@ -70,6 +71,7 @@ public class Main {
         Scanner num = new Scanner(System.in);//Variable de entrada para numeros
         int hash,colision,opcion; //variables opciones, guardan la opcion del usuario en un determinado tiempo
         String clave;
+        int indice;
         Hash tabla = new Hash();
 
         System.out.println("Ingrese el metodo de asignacion de indice deseado");
@@ -119,28 +121,33 @@ public class Main {
                     System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea buscar");
                     clave=letra.nextLine();
 
-                    System.out.println(tabla.Buscar(clave , hash , colision));
-
+                    indice=tabla.Buscar(clave, hash, colision);
+                    if(indice!=101){
+                        tabla.getTarea(indice);
+                    }
                     
                     
                 break;
                 case 3:
 
-                tabla.MostrarId();
-            
-                System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
-
-
-
-
+                
                 break;
                 case 4:
+                    tabla.MostrarId();
+                    System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
+                    clave=letra.nextLine();
+
+                    indice=tabla.Buscar(clave, hash, colision);
+                    if(indice!=101){
+                        System.out.println(tabla.eliminarTarea(indice));
+                    }
                 break;
                 case 5:
+                    System.out.println("Saliendo....");
                 break;
             }
 
-        }while(opcion!=4);
+        }while(opcion!=5);
 
 
     }    

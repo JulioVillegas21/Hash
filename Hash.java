@@ -29,18 +29,17 @@ public class Hash {
         if(this.tabla[indice].getId() != null){
 
             if(colision == 1){
-                indice = Colision.ColisionLineal(indice, this.tabla);
+                indice = Colision.ColisionLineal(indice, this.tabla,"",1);
 
             }
             else{
-                Colision.ColisionCuadratica(indice, this.tabla);
+                indice=Colision.ColisionCuadratica(indice, this.tabla,"",1);
             }
         }
 
         this.tabla[indice]=tarea;
-        tabla[indice].setesAlta(true);
 
-        return (tabla[indice].getesAlta()) ? true : false;
+        return tabla[indice].getesAlta();
     }
 
     private int AritmeticaMod(long clave){
@@ -69,7 +68,7 @@ public class Hash {
         System.out.println("---------------------------------------------------------------");
 
         for (int i = 0 ; i<m ; i++){
-            if (this.tabla[i].getesAlta()!=false){
+            if (this.tabla[i].getId()!=null){
                 System.out.println(i+")"+tabla[i].MostrarId());
             }
         } 
@@ -77,11 +76,11 @@ public class Hash {
         System.out.println("\n");
 
     }
+    public void getTarea(int indice){
+        System.out.println(this.tabla[indice].toString());
+    }
+    public int Buscar(String clave , int hash, int colision ){ //metodo buscar
 
-    public String Buscar(String clave , int hash, int colision ){ //metodo buscar
-
-        int x = 1; // es para calcular coliciones 
-       
         int indice; // su nombre da su funcionalidad xd
 
         long claveTransformada = TransformarId(clave); // Ya que la funcion hash tanforma el indice en un numero cualquiera, necesito hacer lo mismo con lo que ingrese el usuario
@@ -96,29 +95,28 @@ public class Hash {
         }
 
         if(tabla[indice].getId() == null || tabla[indice].getesAlta() == false){
-
-            return "El articulo que desea buscar no exite o ha sido eliminado";
+            System.out.println("El articulo que desea buscar no exite o ha sido eliminado ");
+            return 101;
         }
         else{
-
-            while(tabla[indice] != null && tabla[indice].getesAlta()){
-
-                if (tabla[indice].getId().substring(0, 10).equals(clave)){
-                    
-                    return tabla[indice].toString();
+            if(tabla[indice].getId().substring(0, 10).equals(clave)){
+                return indice;
+            }else{
+                if(colision==1){
+                    indice=Colision.ColisionLineal(indice, tabla, clave, 1);
+                    return indice; 
+                }else{
+                    indice=Colision.ColisionCuadratica(indice, tabla, clave, 1);
+                    return indice; 
                 }
-
-                if (colision == 1) {
-                indice = Colision.ColisionSimpleMod(indice,x);
-             } else {
-                indice = Colision.ColisionSimpleMul(indice,x);
-                }
-
-
+                
             }
-            
-        }
-
-        return "La tarea no fue encontrada o fue eliminada.";
+        }  
+        
+    }
+    public String eliminarTarea(int indice){
+        tabla[indice].setId("");
+        tabla[indice].setesAlta();
+        return "La tarea fue eliminada con exito";
     }
 }
