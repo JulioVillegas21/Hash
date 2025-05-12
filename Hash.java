@@ -40,6 +40,11 @@ public class Hash {
         this.tabla[indice]=tarea;
         tabla[indice].setesAlta(true);
 
+        numElementos++;
+        factorCarga = (double) numElementos / m;
+        if (factorCarga > 0.5) {
+            System.out.println("El factor de carga ha superado el 50%, considere aumentar el tamaño de la tabla.");
+        }
         return (tabla[indice].getesAlta()) ? true : false;
     }
 
@@ -121,4 +126,49 @@ public class Hash {
 
         return "La tarea no fue encontrada o fue eliminada.";
     }
+
+
+    public void Eliminar(String clave,int hash, int colision){ //metodo eliminar
+        int indice;
+        long claveTransformada = TransformarId(clave);
+        int x=1; // es para calcular coliciones
+
+        if (clave.length() > 10){
+            clave = clave.substring(0, 10);
+        }
+
+        if (clave.length() < 10){
+            System.out.println("El id ingresado no es valido");
+            return;
+        }
+        if (hash==1){
+            indice=AritmeticaMod(claveTransformada);
+            
+        }
+        else{
+            indice=MetodoMul(claveTransformada);
+        }
+        while(tabla[indice] != null && tabla[indice].getesAlta()){
+
+                if (tabla[indice].getId().substring(0, 10).equals(clave)){
+                    
+                    this.tabla[indice].setesAlta(false);
+                    return;
+                }
+
+                if (colision == 1) {
+                indice = Colision.ColisionSimpleMod(indice,x);
+             } else {
+                indice = Colision.ColisionSimpleMul(indice,x);
+                }
+
+
+            }
+
+        
+        
+    }
+
+
+   
 }

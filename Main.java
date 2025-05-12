@@ -54,8 +54,9 @@ public class Main {
             System.out.println("[3].Editar Tarea");
             System.out.println("[4].Eliminar Tarea");
             System.out.println("[5].Buscar");
+            System.out.println("[6].Salir");
             op = teclado.nextInt();
-            while(op<1||op>5){
+            while(op<1||op>6){
                 System.out.println("Ingrese una opcion valida");
                 op = teclado.nextInt();
             }
@@ -127,20 +128,60 @@ public class Main {
                 case 3:
 
                 tabla.MostrarId();
-            
                 System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
+                clave=letra.nextLine();
+                System.out.println("Ingrese el nuevo nombre de la tarea");
+                String nombre=letra.nextLine();
+                System.out.println("Ingrese la nueva descripcion de la tarea");
+                String descripcion=letra.nextLine();
+                System.out.println("Ingrese la nueva fecha de creacion de la tarea(AA-MM-DD)");
+                String fechaf=letra.nextLine();
+                System.out.println("Ingrese el nuevo estado de la tarea:\n[1].Pendiente\n[2].En curso\n[3].Terminada");
+                int estado=num.nextInt();
+                while(estado<1 || estado>3){
+                    System.out.println("Ingrese una opcion valida");
+                    estado = num.nextInt();
+                }
+              
+                
+
+                
 
 
 
 
                 break;
                 case 4:
+                 tabla.MostrarId();
+                 System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
+                    clave=letra.nextLine();
+                    tabla.Buscar(clave, hash , colision);
+                    System.out.println("¿desea eliminar la tarea? [1].Si [2].No");
+                    int eliminar = num.nextInt();
+                    while(eliminar<1 || eliminar>2){
+                        System.out.println("Ingrese una opcion valida");
+                        eliminar = num.nextInt();
+                    }
+                    if (eliminar == 1){
+                        tabla.Eliminar(clave, hash , colision);
+                        System.out.println("La tarea ha sido eliminada");
+                    }
+                    else{
+                        System.out.println("La tarea no ha sido eliminada");
+                    }
                 break;
                 case 5:
+                    tabla.MostrarId();
+                    System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea buscar");
+                    clave=letra.nextLine();
+                    System.out.println(tabla.Buscar(clave , hash , colision));
                 break;
+                case 6:
+                    System.out.println("Saliendo del programa");
+                    break;
             }
 
-        }while(opcion!=4);
+        }while(opcion!=6);
 
 
     }    
