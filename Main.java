@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println("Ingrese el nombre de la tarea");
         nombre = letra.nextLine();
-        aux.setNombre(nombre);//Coloca el nombre ingresa11do
+        aux.setNombre(nombre);//Coloca el nombre ingresado
 
         System.out.println("Ingrese la descripcion de la tarea");
         descripcion = letra.nextLine();
@@ -53,7 +53,7 @@ public class Main {
             System.out.println("[2].Mostrar tarea");
             System.out.println("[3].Editar Tarea");
             System.out.println("[4].Eliminar Tarea");
-            System.out.println("[5].Salir");
+            System.out.println("[5].Buscar");
             op = teclado.nextInt();
             while(op<1||op>5){
                 System.out.println("Ingrese una opcion valida");
@@ -114,36 +114,29 @@ public class Main {
                 break;
                 case 2:
 
-                    tabla.MostrarTabla();
-
+                    tabla.MostrarId();
 
                     System.out.println("Porfavor ingrese los primeros 10 caracteres del ID de la tarea que desea buscar");
                     clave=letra.nextLine();
 
-                    tabla.Buscar(clave);
-                    
+                    System.out.println(tabla.Buscar(clave , hash , colision));
 
                     
-
-
-
-
-
-
-
-
-
-                
+                    
                 break;
                 case 3:
-                    // Eliminar tarea
+
+                tabla.MostrarId();
+            
+                System.out.println("Porfavor ingrese los 10 primeros id de la tarea que desea borrar");
+
+
+
+
                 break;
                 case 4:
-                    // Buscar tarea 
-                    
                 break;
                 case 5:
-                    System.out.println("Saliendo...");
                 break;
             }
 

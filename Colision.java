@@ -27,4 +27,21 @@ public class Colision {
         
         return indice;
     }
+
+    public static int ColisionSimpleMod(int indice , int x ){
+
+        indice = (indice + x) % 101;
+
+        return indice;
+    }
+
+    public static int ColisionSimpleMul(int indice, int x){
+
+        
+        indice = (indice + x ^ 2) % 101;
+
+
+        return indice;
+    }
+
 }
